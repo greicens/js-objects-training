@@ -31,3 +31,16 @@
 */
 
 // YOUR CODE HERE
+
+function letterCount(string){
+  var letters = {};
+  for (var i = 0; i < string.length; i++) {
+  var key = string[i];
+    if(letters[key] === undefined){
+      letters[key] = 1;
+    }else{
+      letters[key]++;
+    }
+}
+  return letters;
+}

@@ -34,13 +34,14 @@
 
 function letterCount(string){
   var letters = {};
-  for (var i = 0; i < string.length; i++) {
-  var key = string[i];
-    if(letters[key] === undefined){
-      letters[key] = 1;
+  string = string.split("");
+  string.forEach(function(letter){
+    if(letters[letter] === undefined){
+      letters[letter] = 1;
     }else{
-      letters[key]++;
+      letters[letter]++;
     }
-}
+  });
+
   return letters;
 }

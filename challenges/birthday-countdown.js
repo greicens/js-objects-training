@@ -34,3 +34,39 @@
 */
 
 // YOUR CODE HERE
+
+function daysUntilDate(date){
+  var numberOfDays;
+  var today = new Date();
+  today = Date.now(today);
+  var difference = Date.parse(date) - today;
+
+
+  // var seconds = (difference / 1000) % 60 ;
+  // var minutes = ((difference / (1000*60)) % 60);
+  // var hours   = ((difference / (1000*60*60)) % 24);
+  numberOfDays = Math.ceil(((difference / (1000*60*60*24))));
+
+  return numberOfDays;
+}
+
+function birthdayReminder(data){
+
+  var remiders = data.map(function(person){
+    return person.name + " birthday is in " + daysUntilDate(person.dob) + " days";
+  })
+
+  return remiders;
+}
+
+console.log(daysUntilDate("12/25/2016"))
+console.log(birthdayReminder([
+  {
+    name: "Jack",
+    dob: "10/31/2013"
+  },
+  {
+    name: "Jill",
+    dob: "4/01/1975"
+  }
+]))

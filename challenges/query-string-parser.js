@@ -49,6 +49,7 @@ function parseQueryString(string){
   var result = {};
 
   var pairs = string.split("&");
+  console.log(pairs)
   pairs = pairs.join()
   pairs = pairs.split(",");
 
@@ -58,6 +59,8 @@ function parseQueryString(string){
     return pair.split("=")
   })
 
+  console.log(keys);
+
   keys.forEach(function(element){
     var key = element[0];
     result[key] = element[1];
@@ -65,3 +68,5 @@ function parseQueryString(string){
 
   return result;
 }
+
+parseQueryString("a=apple&b=beet&b=blueberry&c=&d=10")

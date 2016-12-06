@@ -38,3 +38,47 @@
 */
 
 // YOUR CODE HERE
+
+
+function pingPong(table){
+  // var count = {
+  //   steps:0
+  // };
+
+  table.forEach(function(element, idx1){
+    if(element !== null){
+      element['steps']++;
+       console.log("this is current ",element);
+    }
+    //  table.forEach(function(next, idx2){
+    //   console.log("this is next ", next)
+    //   var temp = current;
+    //     current = next;
+    //     next = temp;
+     //
+    //  })
+
+  });
+
+console.log("table after for each ", table)
+
+for (var i = 0; i < table[0].steps; i++) {
+  var current = table[i];
+  var previous = table[i-1];
+  var next = table[i+1];
+
+    var temp = current;
+    current = next;
+    console.log("this is next ",next)
+    next = temp;
+    console.log("this is next ",next)
+
+
+}
+  // console.log(table)
+
+  return table;
+}
+var table = [{steps: 0}, null, null, null];
+console.log(pingPong(table));
+console.log(pingPong(table));

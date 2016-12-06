@@ -45,3 +45,23 @@
 */
 
 // YOUR CODE HERE
+function parseQueryString(string){
+  var result = {};
+
+  var pairs = string.split("&");
+  pairs = pairs.join()
+  pairs = pairs.split(",");
+
+  var keys = pairs.map(function(pair){
+    pair.split(",");
+    pair.split("=");
+    return pair.split("=")
+  })
+
+  keys.forEach(function(element){
+    var key = element[0];
+    result[key] = element[1];
+  })
+
+  return result;
+}

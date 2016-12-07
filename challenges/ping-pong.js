@@ -73,7 +73,7 @@ function pingPong(array){
 }
 
 // var table = [{steps: 0}, null, null, null];
-table =  [null, {steps: 7}, null, null]
+table = [null, {steps: 7}, null, null]
 
 
 console.log(pingPong(table))

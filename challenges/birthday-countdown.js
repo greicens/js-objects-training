@@ -34,17 +34,15 @@
 */
 
 // YOUR CODE HERE
+var today = new Date();
+var todayYear = today.getFullYear();
+var todayMonth = today.getMonth();
+var todayDay = today.getDate();
 
 function daysUntilDate(date){
   var numberOfDays;
-  var today = new Date();
-  today = Date.now(today);
+
   var difference = Date.parse(date) - today;
-
-
-  // var seconds = (difference / 1000) % 60 ;
-  // var minutes = ((difference / (1000*60)) % 60);
-  // var hours   = ((difference / (1000*60*60)) % 24);
   numberOfDays = Math.ceil(((difference / (1000*60*60*24))));
 
   return numberOfDays;
@@ -53,20 +51,28 @@ function daysUntilDate(date){
 function birthdayReminder(data){
 
   var remiders = data.map(function(person){
-    return person.name + " birthday is in " + daysUntilDate(person.dob) + " days";
+    var personDob = new Date(person.dob);
+    var personDobYear = personDob.getFullYear();
+    var personDobMonth = personDob.getMonth();
+    var personDobDay = personDob.getDate();
+    var nextBirthday = new Date();
+    nextBirthday.setDate(personDobDay);
+    nextBirthday.setMonth(personDobMonth);
+
+    if(personDobMonth < todayMonth){
+        nextBirthday.setYear(todayYear + 1);
+      }else if(personDobMonth === todayMonth){
+        if(personDobDay < todayDay){
+          nextBirthday.setYear(todayYear + 1);
+        }else{
+          nextBirthday.setYear(todayYear);
+        }
+      }else {
+        nextBirthday.setYear(todayYear);
+      }
+
+    return person.name + " birthday is in " + daysUntilDate(nextBirthday) + " days";
   })
 
   return remiders;
 }
-
-console.log(daysUntilDate("12/25/2016"))
-console.log(birthdayReminder([
-  {
-    name: "Jack",
-    dob: "10/31/2013"
-  },
-  {
-    name: "Jill",
-    dob: "4/01/1975"
-  }
-]))

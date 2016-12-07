@@ -39,46 +39,48 @@
 
 // YOUR CODE HERE
 
-
-function pingPong(table){
-  // var count = {
-  //   steps:0
-  // };
-
-  table.forEach(function(element, idx1){
+function pingPong(array){
+  var ballIndex;
+  var ball;
+  array.forEach(function(element, index){
     if(element !== null){
-      element['steps']++;
-       console.log("this is current ",element);
+      ballIndex = index;
+      ball = element;
+      element.steps++;
     }
-    //  table.forEach(function(next, idx2){
-    //   console.log("this is next ", next)
-    //   var temp = current;
-    //     current = next;
-    //     next = temp;
-     //
-    //  })
-
   });
+  console.log("this is ball index", ballIndex);
+  console.log("this is ball.steps ", ball.steps);
 
-console.log("table after for each ", table)
+  //if(array[ballIndex] !== null){
+    if(ballIndex < array.length-1 && ball.steps <= 4){
+      console.log("inside first if")
+      var temp = array[ballIndex];
+      array[ballIndex] = array[ballIndex + 1];
+      array[ballIndex + 1] = temp;
+      ballIndex++;
+    }
 
-for (var i = 0; i < table[0].steps; i++) {
-  var current = table[i];
-  var previous = table[i-1];
-  var next = table[i+1];
-
-    var temp = current;
-    current = next;
-    console.log("this is next ",next)
-    next = temp;
-    console.log("this is next ",next)
-
-
+    if(ballIndex <= array.length-1 && ball.steps > 4){
+      console.log("inside second if")
+      var temp = array[ballIndex];
+      array[ballIndex] = array[ballIndex - 1];
+      array[ballIndex - 1] = temp;
+      ballIndex--;
+    }
+  //}
+  return array;
 }
-  // console.log(table)
 
-  return table;
-}
-var table = [{steps: 0}, null, null, null];
-console.log(pingPong(table));
-console.log(pingPong(table));
+// var table = [{steps: 0}, null, null, null];
+table =  [null, {steps: 7}, null, null]
+
+
+console.log(pingPong(table))
+console.log(pingPong(table))
+console.log(pingPong(table))
+console.log(pingPong(table))
+console.log(pingPong(table))
+console.log(pingPong(table))
+console.log(pingPong(table))
+console.log(pingPong(table))
